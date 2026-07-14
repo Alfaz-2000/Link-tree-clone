@@ -3,9 +3,9 @@ import React from 'react'
 
 const Navbar = () => {
     return (
-        <nav className='flex justify-between bg-white w-[80vw] fixed  top-10 right-[10] rounded-full p-5 px-7'>
+        <nav className='flex justify-between bg-white w-[80vw] fixed  top-10 right-[10vw] rounded-full p-5 px-7'>
             <div className="logo flex gap-20 items-center">
-                {/* <img className='w-28 h-16' src="/logo.png" alt="" /> */}
+                <img className='h-8 w-auto' src="/linktree-logo.svg" alt="lintree-logo-image" />
                 <ul className='flex gap-10'>
                     <li>Products</li>
                     <li>Templates</li>
