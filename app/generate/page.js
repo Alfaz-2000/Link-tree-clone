@@ -1,41 +1,77 @@
+"use client"
 import React from 'react'
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Generate = () => {
-  return (
-    <div className='bg-purple-700 min-h-screen grid grid-cols-2'>
-        <div className="col1 flex justify-center items-center flex-col text-gray-900">
-          <div className="flex flex-col gap-5 my-8">
-            <h1 className='font-bold text-4xl'>Create Your BitTree</h1>
-          <div className="item">
-            <h2 className='font-semibold text-2xl'>Step 1: Claim your handle</h2>
-            <div className="mx-4">
-              <input className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Choose your handle' />
-              
+    const [link, setlink] = useState("")
+    const [linktext, setLinktext] = useState("")
+    const [handle, sethandle] = useState("")
+    const [pic, setpic] = useState("")
+
+    const addLink = async (text, link, handle) => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "link": link,
+            "link-text": text,
+            "handle": handle
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        const r = await fetch("http://localhost:3000/api/add", requestOptions)
+        const result = await r.json()
+        toast(result.message)
+        // bleow code helps to clear filds of form after submitting
+        setlink("")
+        setLinktext("")
+    }
+
+    return (
+        <div className='bg-purple-700 min-h-screen grid grid-cols-2'>
+
+          
+            <div className="col1 flex justify-center items-center flex-col text-gray-900">
+                <div className="flex flex-col gap-5 my-8">
+                    <h1 className='font-bold text-4xl'>Create Your BitTree</h1>
+                    <div className="item">
+                        <h2 className='font-semibold text-2xl'>Step 1: Claim your handle</h2>
+                        <div className="mx-4">
+                            <input value={handle || ""} onChange={e=>{sethandle(e.target.value)}} className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Choose your handle' />
+
+                        </div>
+                    </div>
+                    <div className="item">
+                        <h2 className='font-semibold text-2xl'>Step 2: Add link's</h2>
+                        <div className="mx-4">
+                            <input value={link || ""} onChange={e=>{setlink(e.target.value)}} className='px-4 py-2 my-2 mr-4 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Enter link text' />
+                            <input value={linktext || ""} onChange={e=>{setLinktext(e.target.value)}} className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Enter link' />
+                            <button onClick={()=>{addLink(linktext,link,handle)}} className=' p-5 py-2 mx-2 bg-slate-800 text-white font-bold rounded-3xl'>Add Link</button>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <h2 className='font-semibold text-2xl'>Step 3: Add Your Picture</h2>
+                        <div className="mx-4 flex flex-col">
+                            <input value={pic || ""} onChange={e=>{setpic(e.target.value)}} className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Add Your Picture Link' />
+                            <button className=' p-5 py-2 mx-2 my-5 w-fit bg-slate-800 text-white font-bold rounded-3xl'>Create Your BitLink</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div className="item">
-            <h2 className='font-semibold text-2xl'>Step 2: Add link's</h2>
-            <div className="mx-4">
-              <input className='px-4 py-2 my-2 mx-4 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Enter link text' />
-              <input className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Enter link' />
-              <button className=' p-5 py-2 mx-2 bg-slate-800 text-white font-bold rounded-3xl'>Add Link</button>
+            <div className="col2 w-full h-screen bg-purple-700">
+                <img className='h-full object-contain' src="/generate.png" alt="generate-image" />
+                  <ToastContainer />
             </div>
-          </div>
-          <div className="item">
-            <h2 className='font-semibold text-2xl'>Step 3: Add Your Picture</h2>
-            <div className="mx-4 flex flex-col">
-              <input className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Add Your Picture Link' />
-                <button className=' p-5 py-2 mx-2 my-5 w-fit bg-slate-800 text-white font-bold rounded-3xl'>Create Your BitLink</button>
-            </div>
-          </div>
-          </div>
+
         </div>
-        <div className="col2 w-full h-screen bg-purple-700">
-            <img className='h-full object-contain' src="/generate.png" alt="generate-image" />
-        </div>
-      
-    </div>
-  )
+    )
 }
 
 export default Generate
