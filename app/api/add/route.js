@@ -7,5 +7,5 @@ export async function POST(request) {
     const collection = db.collection("links")
 
     const result = await collection.insertOne(body)
-  return Response.json({ success:true, error:false, message: 'added', result:'result' })
+  return Response.json({ success:true, error:false, message: 'Successfuly created your BitTree!', result:'result' })
 }
