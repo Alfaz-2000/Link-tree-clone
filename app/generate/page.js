@@ -34,14 +34,14 @@ const Generate = () => {
         setLinks(links.concat([{link:"",linktext:""}]))
     }
 
-    const submitLinks = async (text, link, handle) => {
+    const submitLinks = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-            "links": links,
-            "handle": handle,
-            "pic": pic,
+            links,
+            handle,
+            pic,
         });
 
         console.log(raw)
@@ -57,7 +57,7 @@ const Generate = () => {
         const result = await r.json()
         if(result.success){
             toast.success(result.message)
-            setLinks([])
+            setLinks([{link:"",linktext:""}])
             sethandle("")
             setpic("")
         }
@@ -98,7 +98,7 @@ const Generate = () => {
                             <input value={pic || ""} onChange={e=>{setpic(e.target.value)}} className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Add Your Picture Link' />
 
                             {/* disabling a create btn no empty entry should be added to db and by adding this validation here this called front-end validation but you do it in the back-end too */}
-                            <button disabled={pic == "" || handle == "" || links[0].linktext == ""} onClick={()=>{submitLinks()}} className=' disabled:bg-slate-600 p-5 py-2 mx-2 my-5 w-fit bg-slate-800 text-white font-bold rounded-3xl'>Create Your BitLink</button>
+                            <button disabled={pic === "" || handle === "" || links.length === 0 || links[0].linktext == ""} onClick={()=>{submitLinks()}} className=' disabled:bg-slate-600 p-5 py-2 mx-2 my-5 w-fit bg-slate-800 text-white font-bold rounded-3xl'>Create Your BitLink</button>
                         </div>
                     </div>
                 </div>
