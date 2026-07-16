@@ -1,17 +1,18 @@
 import React from 'react'
+import Link from 'next/link'
 
 
 const Navbar = () => {
     return (
         <nav className='flex justify-between bg-white w-[80vw] fixed  top-10 right-[10vw] rounded-full p-5 px-7'>
             <div className="logo flex gap-20 items-center">
-                <img className='h-8 w-auto' src="/linktree-logo.svg" alt="lintree-logo-image" />
+                <Link href='/'><img className='h-8 w-auto' src="/linktree-logo.svg" alt="lintree-logo-image" /></Link>
                 <ul className='flex gap-10'>
-                    <li>Products</li>
-                    <li>Templates</li>
-                    <li>Marketplace</li>
-                    <li>Learn</li>
-                    <li>Pricing</li>
+                    <Link href='/'><li>Products</li></Link>
+                    <Link href='/'><li>Templates</li></Link>
+                    <Link href='/'><li>Marketplace</li></Link>
+                    <Link href='/'><li>Learn</li></Link>
+                    <Link href='/'><li>Pricing</li></Link>
                 </ul>
             </div>
             <div className="flex gap-3">
