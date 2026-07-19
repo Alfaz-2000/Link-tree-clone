@@ -1,10 +1,15 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
-
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
-    return (
-        <nav className='flex justify-between bg-white w-[80vw] fixed  top-10 right-[10vw] rounded-full p-5 px-7'>
+    const pathname = usePathname()
+    const showNavbar = ["/","/generate"].includes(pathname)
+
+  
+    return (<>
+       {showNavbar && <nav className='flex justify-between bg-white w-[80vw] fixed  top-10 right-[10vw] rounded-full p-5 px-7'>
             <div className="logo flex gap-20 items-center">
                 <Link href='/'><img className='h-8 w-auto' src="/linktree-logo.svg" alt="lintree-logo-image" /></Link>
                 <ul className='flex gap-10'>
@@ -20,7 +25,8 @@ const Navbar = () => {
                 <button className='signup bg-gray-900 text-white rounded-full p-4'>Sign Up Free</button>
             </div>
         </nav>
-    )
+ } </>
+  )
 }
 
 export default Navbar

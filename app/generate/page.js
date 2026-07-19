@@ -13,6 +13,7 @@ const Generate = () => {
     const [links, setLinks] = useState([{link:"",linktext:""}])
     const [handle, sethandle] = useState(searchParams.get('handle'))
     const [pic, setpic] = useState("")
+    const [desc, setdesc] = useState("")
 
     const handleChange = (index, link, linktext)=>{
         setLinks((initialLinks)=>{
@@ -42,6 +43,7 @@ const Generate = () => {
             links,
             handle,
             pic,
+            desc
         });
 
         console.log(raw)
@@ -60,6 +62,7 @@ const Generate = () => {
             setLinks([{link:"",linktext:""}])
             sethandle("")
             setpic("")
+            setdesc("")
         }
         else{
             toast.error(result.message)
@@ -96,6 +99,7 @@ const Generate = () => {
                         <h2 className='font-semibold text-2xl'>Step 3: Add Your Picture</h2>
                         <div className="mx-4 flex flex-col">
                             <input value={pic || ""} onChange={e=>{setpic(e.target.value)}} className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Add Your Picture Link' />
+                            <input value={desc || ""} onChange={e=>{setdesc(e.target.value)}} className='px-4 py-2 my-2 focus:outline-purple-950 rounded-full bg-white' type="text" placeholder='Enter short Description' />
 
                             {/* disabling a create btn no empty entry should be added to db and by adding this validation here this called front-end validation but you do it in the back-end too */}
                             <button disabled={pic === "" || handle === "" || links.length === 0 || links[0].linktext == ""} onClick={()=>{submitLinks()}} className=' disabled:bg-slate-600 p-5 py-2 mx-2 my-5 w-fit bg-slate-800 text-white font-bold rounded-3xl'>Create Your BitLink</button>
