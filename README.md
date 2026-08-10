@@ -1,37 +1,207 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LinkTree Clone
 
-## Getting Started
+A full-stack Linktree-style web application that allows users to create a personalized profile and manage multiple social media, product, and affiliate links from a single page.
 
-First, run the development server:
+Users can generate a personalized link page and share one URL containing all of their important links.
+
+---
+
+## 🌐 Project Overview
+
+This project recreates the core functionality of a link-in-bio platform using Next.js and MongoDB.
+
+Users can manage different types of links, including:
+
+- Social media profiles
+- Product links
+- Affiliate links
+- Other external links
+
+Each user's links are associated with their unique handle and can be accessed through their personalized profile page.
+
+---
+
+## ✨ Key Features
+
+- Personalized user link pages
+- Unique dynamic handles
+- Add and manage multiple links
+- Support for social, product, and affiliate links
+- MongoDB database integration
+- Dynamic profile pages
+- Link validation
+- Responsive design
+- Next.js API routes
+- Reusable React components
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **Next.js**
+- **React**
+- **JavaScript**
+- **CSS**
+
+### Backend & Database
+
+- **Next.js API Routes**
+- **MongoDB**
+
+### Development Tools
+
+- **Git**
+- **GitHub**
+- **VS Code**
+
+---
+
+## 🗄️ Database
+
+MongoDB is used to store and retrieve user and link information.
+
+The database is used for:
+
+- User profiles
+- Unique handles
+- Social media links
+- Product links
+- Affiliate links
+- Dynamic profile data
+
+The MongoDB connection is configured using environment variables to keep database credentials secure.
+
+---
+
+## 📂 Project Structure
+
+```text
+Link-tree-clone/
+│
+├── app/
+│   ├── [handle]/
+│   ├── api/
+│   │   └── add/
+│   ├── generate/
+│   ├── layout.js
+│   ├── page.js
+│   └── globals.css
+│
+├── components/
+│   └── Reusable UI components
+│
+├── lib/
+│   └── Database configuration
+│
+├── public/
+│   └── Static assets
+│
+├── .gitignore
+├── next.config.mjs
+├── package.json
+├── jsconfig.json
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### 2. Navigate to the project
+
+```bash
+cd Link-tree-clone
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure environment variables
+
+Create a `.env.local` file in the project root:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+```
+
+Replace the value with your MongoDB connection string.
+
+> **Important:** Never commit `.env.local` or your MongoDB credentials to GitHub.
+
+### 5. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Development Highlights
 
-## Learn More
+### Dynamic User Pages
 
-To learn more about Next.js, take a look at the following resources:
+Each user can have a unique handle, allowing their links to be accessed through a personalized URL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### MongoDB Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+User and link data is stored and retrieved from MongoDB, allowing information to persist between sessions.
 
-## Deploy on Vercel
+### Link Management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application supports different types of external links, including social media, products, and affiliate links.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Link-tree-clone
+### API Routes
+
+Next.js API routes are used to handle server-side operations such as adding and retrieving link information.
+
+### Environment Variables
+
+Sensitive database credentials are stored using environment variables instead of being hard-coded into the application.
+
+### Responsive Interface
+
+The application is designed to work across desktop, tablet, and mobile devices.
+
+---
+
+## 🧠 What I Learned
+
+- Integrating MongoDB with Next.js
+- Creating and using API routes
+- Connecting frontend components with backend APIs
+- Working with dynamic routes in Next.js
+- Handling user-generated data
+- Using environment variables for sensitive configuration
+- Building database-driven dynamic pages
+- Structuring a full-stack Next.js application
+
+---
+
+## 👨‍💻 Developer
+
+**Alfaz**
+
+Full-Stack JavaScript Developer
+
+### Technologies
+
+Next.js · React · JavaScript · MongoDB
+
+---
+
+## 📄 License
+
+This project was developed as a full-stack learning and portfolio project.
